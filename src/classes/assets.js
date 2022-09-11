@@ -4,7 +4,30 @@ export default [
         data: {},
         items:
         [
-            { name: 'lennaTexture', source: '/assets/lenna.png', type: 'texture' },
+            { 
+                name: 'joystick', 
+                source: '/assets/models/joystick.glb', 
+                type: 'model' 
+            },
+
+            // { 
+            //     name: '', 
+            //     source: '/assets/', 
+            //     type: 'texture' 
+            // },
+
+            // { 
+            //     name: '', 
+            //     source: '/assets/', 
+            //     type: 'texture' 
+            // },
+
+            // { 
+            //     name: '', 
+            //     source: '/assets/', 
+            //     type: 'texture' 
+            // },
+            
         ]
     }
 ]

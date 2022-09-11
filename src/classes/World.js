@@ -1,5 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
+import Environment from './Environment.js'
+import { Joystick } from './Objects'
 
 export default class World
 {
@@ -16,35 +18,15 @@ export default class World
         {
             if(_group.name === 'base')
             {
-                this.setDummy()
+                this.joystick = new Joystick()
+
+                this.environment = new Environment()
             }
         })
     }
 
-    setDummy()
-    {
-        this.resources.items.lennaTexture.encoding = THREE.sRGBEncoding
-        
-        this.cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial({ map: this.resources.items.lennaTexture})
-        )
-        this.scene.add(this.cube)    
-
-        this.debugObjects()
-    }
-
     debugObjects()
     {
-        if(this.debug)
-        {
-            this.debugFolder = this.debug.addFolder('Cube')
-
-            this.debugFolder
-            .addColor(this.cube.material, 'color' )
-        }
-
-        
     }
 
     resize()
@@ -53,11 +35,7 @@ export default class World
 
     update()
     {
-        if(this.cube)
-        {
-            this.cube.rotation.x += this.time.delta * 0.001
-            this.cube.rotation.y += this.time.delta * 0.0025
-        }
+        
     }
 
     destroy()
