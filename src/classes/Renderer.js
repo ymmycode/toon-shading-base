@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import Experience from './Experience.js'
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { OutlineEffect } from 'three/examples/jsm/effects/OutlineEffect.js'
 
 export default class Renderer
 {
@@ -25,6 +26,7 @@ export default class Renderer
         this.usePostprocess = false
 
         this.setInstance()
+        this.setOutlineEffect()
         this.setPostProcess()
     }
 
@@ -108,6 +110,18 @@ export default class Renderer
         }
     }
 
+    setOutlineEffect()
+    {
+        this.outlineColor = new THREE.Color(`#1D1D5A`)
+
+        this.effect = new OutlineEffect(this.instance, {
+            defaultThickness: 0.005,
+            defaultAlpha: 1.0,
+            defaultColor: [this.outlineColor.r, this.outlineColor.g, this.outlineColor.b],
+            defaultKeepAlive: false,
+        })
+    }
+
     setPostProcess()
     {
         this.postProcess = {}
@@ -163,7 +177,8 @@ export default class Renderer
         }
         else
         {
-            this.instance.render(this.scene, this.camera.instance)
+            // this.instance.render(this.scene, this.camera.instance)
+            this.effect.render(this.scene, this.camera.instance)
         }
 
         if(this.stats)
