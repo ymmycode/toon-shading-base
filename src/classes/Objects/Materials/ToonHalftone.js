@@ -28,6 +28,7 @@ export default class ToonHalftone
   materialSetup()
   {
     this.material = new THREE.ShaderMaterial({
+      precision: 'mediump',
       uniforms: this.uniforms,
       vertexShader: ToonHalftoneVert,
       fragmentShader: ToonHalftoneFrag,

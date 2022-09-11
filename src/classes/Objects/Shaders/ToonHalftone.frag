@@ -34,8 +34,10 @@ void main()
 
     //sqrt of sum of difference between dist at curr pixel and neighbor in x and y directions (like mip map)
     float frag_width = fwidth(dist);
+
     // antialias using width of fragment so that fragments near edge of circle take on mixed color values (antialias high frequencies)
     float pixel_step = smoothstep(radius - frag_width, radius + frag_width, dist);
+
     vec4 fragcolor = mix(color1, color2, pixel_step); //lerp between two colors
     gl_FragColor = fragcolor;
 

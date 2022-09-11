@@ -15,6 +15,8 @@ export default class Joystick {
     this.joystick = this.joystickGLB.scene
 
     this.joystickGroup = new THREE.Group()
+    this.scale = 1.2
+    this.joystickGroup.scale.set(this.scale, this.scale, this.scale)
     
     this.setGroup()
     this.setMaterial()

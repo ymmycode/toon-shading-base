@@ -23,6 +23,7 @@ export default class BasicToonShader
   materialSetup()
   {
     this.material = new THREE.ShaderMaterial({
+      precision: 'mediump',
       uniforms: this.uniforms,
       vertexShader: BasicToonVert,
       fragmentShader: BasicToonFrag,
